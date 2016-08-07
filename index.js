@@ -1,7 +1,7 @@
 ;(function(exports) {
   'use strict'
 
-  var VERSION = '0.1.1'
+  var VERSION = '0.1.2'
   var IS_DEBUG = false
   var hook = (typeof window !== 'undefined' && window.__VUE_DEVTOOLS_GLOBAL_HOOK__)
 
