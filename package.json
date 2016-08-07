@@ -1,0 +1,13 @@
+{
+  "name": "velm",
+  "description": "Velm is Vue State Management inspired by Elm",
+  "author": "Keuller Magalhaes <keuller.magalhaes@gmail.com>",
+  "scripts": {
+    "test": "tape 'test/**/*_test.js' "
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "tape": "^4.6.0"
+  }
+}
