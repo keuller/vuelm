@@ -1,4 +1,4 @@
-# VUELM
+# VuElm
 
 ### It's a Vue state management inspired by Elm architecture.
 
