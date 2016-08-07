@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vuelm Counter</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style type="text/css">
+      .negative { color:crimson; }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script type="text/javascript" src="https://s3-us-west-1.amazonaws.com/keuller.com/vuelm/v0.1.2/vuelm.js"></script>
+    <script type="text/javascript" src="./model/counter.js"></script>
+    <br/>
+    <div id="app">
+      <div class="container">
+        <label>Counter</label>
+        <strong :class="negative()">{{count}}</strong>
+        <br/>
+        <button class="button is-primary" @click="inc()">Increment</button>
+        <button class="button is-danger" @click="dec()">Decrement</button>
+      </div>
+    </div>
+
+    <script>
+      Vuelm.info()
+
+      var app = {
+        el: '#app',
+        data: function() {
+          return {
+            count: 0
+          }
+        },
+        methods: {
+          inc: function() {
+            Counter.increment()
+          },
+          dec: function() {
+            Counter.decrement()
+          },
+          negative() {
+            return { 'negative': this.count < 0 }
+          }
+        }
+      }
+
+      new Vue(Vuelm.connect(app, { counter: Counter }))
+    </script>
+  </body>
+</html>
