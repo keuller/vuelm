@@ -1,7 +1,7 @@
 ;(function(exports) {
   'use strict'
 
-  var VERSION = '0.1.0'
+  var VERSION = '0.1.1'
   var IS_DEBUG = false
   var hook = (typeof window !== 'undefined' && window.__VUE_DEVTOOLS_GLOBAL_HOOK__)
 
@@ -26,8 +26,8 @@
   }
 
   var _info = function() {
-    console.log('Velm version: ', VERSION)
-    console.log('Velm debug mode:', IS_DEBUG)
+    console.log('Vuelm version: ', VERSION)
+    console.log('Vuelm debug mode:', IS_DEBUG)
   }
 
   var _enableDebug = function(flag) {
@@ -166,4 +166,4 @@
   exports.debug = _enableDebug
   exports.model = _model
   exports.connect = _connect
-})(typeof exports === 'undefined' ? (this.Velm = {}) : exports)
+})(typeof exports === 'undefined' ? (this.Vuelm = {}) : exports)
