@@ -111,3 +111,5 @@ $ npm install vuelm
 ```
 
 See the examples to learn more about Vuelm.
+
+Note: VuElm was tested only with Vue 1.X.
