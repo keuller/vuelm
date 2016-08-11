@@ -34,7 +34,7 @@ The result will be:
 
 ### Vuelm.logger(true|false)
 
-From version 02.0, this method enable/disable console log of updates.
+From version 0.2.0, this method enable/disable console log of updates.
 
 ![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_log.png)
 
