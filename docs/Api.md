@@ -38,7 +38,7 @@ From version 0.2.0, this method enable/disable console log of updates.
 
 ![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_log.png)
 
-### model(state, updates, actions)
+### Vuelm.model(state, updates, actions)
 
 This function create model objects that represents the state of application.
 
@@ -54,7 +54,7 @@ This function create model objects that represents the state of application.
 	export default model(state, updates, actions)
 ```
 
-### connect(component, models)
+### Vuelm.connect(component, models)
 
 This function binds the Vue component with one or more models.
 
@@ -71,7 +71,7 @@ This function binds the Vue component with one or more models.
 
 The first argument is the Vue component object and the second one, must be a literal object with all models you wish to bind with. When you has more than one model bound to component, Vuelm merge all states of each model into a single one.
 
-### types(...args)
+### Vuelm.types(...args)
 
 This function create a literal object that will be used as update type. You must pass a list of strings constants.
 
@@ -88,7 +88,7 @@ This function create a literal object that will be used as update type. You must
 	}
 ```
 
-### update(type, data)
+### Vuelm.update(type, data)
 
 This method is used to send an update to model, specifying the update type and some data (optional).
 
