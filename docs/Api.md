@@ -4,7 +4,7 @@ This document describes the Vuelm API.
 
 ### Vuelm.info()
 
-Prints out on browser console the informations about Vuelm.
+This method prints out on browser's console the informations about Vuelm.
 
 ```javascript
 	import Vuelm from 'vuelm'
@@ -16,9 +16,9 @@ The result will be:
 
 ![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_info.png)
 
-### Vuelm.debug(true)
+### Vuelm.debug(true|false)
 
-This function enable/disable debug mode for Vuelm. Default value is **false**.
+From version 0.2.0, this method enable/disable integration with Vue DevTools. Default value is **false**.
 
 ```javascript
 	import Vuelm from 'vuelm'
@@ -29,6 +29,14 @@ This function enable/disable debug mode for Vuelm. Default value is **false**.
 The result will be:
 
 ![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_debug.png)
+
+*Notice: There is an issue when you click on **Reset** button, but it does not affect you code. Its occurs because Vuelm does not support expected API like Vuex.*
+
+### Vuelm.logger(true|false)
+
+From version 02.0, this method enable/disable console log of updates.
+
+![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_log.png)
 
 ### model(state, updates, actions)
 

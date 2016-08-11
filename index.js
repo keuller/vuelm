@@ -1,8 +1,12 @@
 ;(function(exports) {
   'use strict'
 
-  var VERSION = '0.1.2'
-  var IS_DEBUG = false
+  var runtime = {
+    VERSION: '0.2.0',
+    IS_DEBUG: false,
+    IS_LOGGER: false
+  }
+
   var hook = (typeof window !== 'undefined' && window.__VUE_DEVTOOLS_GLOBAL_HOOK__)
 
   var deepProp = function(obj, path) {
@@ -26,12 +30,19 @@
   }
 
   var _info = function() {
-    console.log('Vuelm version: ', VERSION)
-    console.log('Vuelm debug mode:', IS_DEBUG)
+    console.log('Vuelm version: ', runtime.VERSION)
+    console.log('Vuelm debug mode:', runtime.IS_DEBUG)
+    console.log('Vuelm logger mode:', runtime.IS_LOGGER)
   }
 
   var _enableDebug = function(flag) {
-    IS_DEBUG = flag
+    runtime.IS_DEBUG = flag
+    Vue.config.debug = flag
+    Vue.config.devtools = flag
+  }
+
+  var _enableLog = function(flag) {
+    runtime.IS_LOGGER = flag
   }
 
   var Model = function(state, updates, actions) {
@@ -39,6 +50,7 @@
       state: state,
       updates: updates
     }
+
     this._subscriber_id = 100
     this._subscribers = {}
 
@@ -72,8 +84,8 @@
         , prev = deepCopy(this._options.state)
         , next = {}
 
-      if (IS_DEBUG && console.group) console.group(type)
-      if (IS_DEBUG) console.log('Old State:', prev)
+      if (runtime.IS_LOGGER && console.group) console.group(type)
+      if (runtime.IS_LOGGER) console.log('Old State:', prev)
 
       if (typeof this._options.updates[type] === 'function') {
         next = this._options.updates[type].call(this, prev, data)
@@ -82,8 +94,9 @@
         next = prev
       }
 
-      if (IS_DEBUG) console.log('New State:', next)
-      if (IS_DEBUG && console.groupEnd) console.groupEnd()
+      if (runtime.IS_DEBUG && hook) { hook.emit('vuex:mutation', { type: type, payload: data || {} }, next) }
+      if (runtime.IS_LOGGER) console.log('New State:', next)
+      if (runtime.IS_LOGGER && console.groupEnd) console.groupEnd()
       this._notify()
       prev = null; next = null
     },
@@ -102,6 +115,7 @@
 
   var _model = function model(state, updates, actions) {
     var $model = new Model(state, updates, actions)
+    if (hook) { hook.emit('vuex:init', this) }
     return $model
   };
 
@@ -161,8 +175,9 @@
 
   exports.info = _info
   exports.types = _createTypes
-  exports.version = VERSION
-  exports.isDebug = IS_DEBUG
+  exports.version = runtime.VERSION
+  exports.isDebug = runtime.IS_DEBUG
+  exports.logger = _enableLog
   exports.debug = _enableDebug
   exports.model = _model
   exports.connect = _connect

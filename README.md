@@ -102,12 +102,16 @@ This component has two buttons which are used to invoke actions from our model o
 
 As we can see Vuelm brings the simplicity and powerful design from Elm architecture to our Vue components.
 
+## Development Support
+
+Vuelm has built in support for development through modes **debug** and **logger**. You can enable them using Vuelm API. See [docs](https://github.com/keuller/vuelm/blob/master/docs/Api.md)
+
 ## How To Install
 
 To install Vuelm, you can use: 
 
 ```bash
-$ npm install vuelm
+$ npm install vuelm -S
 ```
 
 See the examples to learn more about Vuelm.
