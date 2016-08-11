@@ -30,7 +30,7 @@ The result will be:
 
 ![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_debug.png)
 
-*Notice: There is an issue when you click on Reset button, but it does not affect you code. Its occurs because Vuelm does not support expected API like Vuex.*
+*Notice: There is an issue when you click on Reset button, but it does not affect your code. Its occurs because Vuelm does not support expected API like Vuex.*
 
 ### Vuelm.logger(true|false)
 
