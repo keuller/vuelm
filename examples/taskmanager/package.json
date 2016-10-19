@@ -17,7 +17,7 @@
   "dependencies": {
     "babel-polyfill": "^6.13.0",
     "vue": "^1.0.26",
-    "vuelm": "^0.2.0"
+    "vuelm": "^0.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",

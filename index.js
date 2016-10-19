@@ -2,7 +2,7 @@
   'use strict'
 
   var runtime = {
-    VERSION: '0.2.0',
+    VERSION: '0.3.0',
     IS_DEBUG: false,
     IS_LOGGER: false
   }
@@ -136,13 +136,13 @@
       this.$options.state = _state
     }
 
-    component.ready = function() {
+    component.mounted = function() {
       var _disposes = [], _state = this.$options.state
 
       var watcher = function(newState) {
         this.$options.state = Object.assign(_state, newState)
         for(var prop in this.$options.state) {
-          this.$set(prop, deepProp(this.$options.state, prop))
+          this.$set(this, prop, deepProp(this.$options.state, prop))
         }
       }.bind(this)
 

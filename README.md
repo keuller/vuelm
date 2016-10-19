@@ -122,4 +122,5 @@ See the examples to learn more about Vuelm.
 * [Task Manager Demo](http://keuller.com/vuelm/demos/taskman/)
 * [GUS Demo](http://keuller.com/vuelm/demos/gus/)
 
-#### Note: VuElm was tested only with Vue 1.X.
+#### Note: VuElm 0.2.0 is compatible only with Vue 1.X.
+
