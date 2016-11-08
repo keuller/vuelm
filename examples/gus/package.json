@@ -18,7 +18,7 @@
     "axios": "^0.13.1",
     "babel-polyfill": "^6.13.0",
     "vue": "^1.0.26",
-    "vuelm": "^0.3.0"
+    "vuelm": "^0.3.5"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
