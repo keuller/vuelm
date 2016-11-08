@@ -2,7 +2,7 @@
   'use strict'
 
   var runtime = {
-    VERSION: '0.3.0',
+    VERSION: '0.3.5',
     IS_DEBUG: false,
     IS_LOGGER: false
   }
@@ -120,7 +120,8 @@
   };
 
   var _connect = function connect(component, models) {
-    var _ready = component.ready
+    var _ready = component.mounted
+      , _created = component.created
       , _bdestroy = component.beforeDestroy
 
     if (typeof models !== 'object') {
@@ -134,6 +135,7 @@
         _state = Object.assign(_state, models[key].state())
       }
       this.$options.state = _state
+      if (_created !== undefined) _created()
     }
 
     component.mounted = function() {
