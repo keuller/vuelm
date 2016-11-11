@@ -15,7 +15,7 @@
 
     methods: {
       doSearch() {
-        this.$dispatch("on-search", { text: this.text })
+        this.$emit("filter", { text: this.text })
       }
     }
   }

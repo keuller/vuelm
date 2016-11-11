@@ -1,13 +1,9 @@
 import 'babel-polyfill'
 import Vue from 'vue'
-import Gus from 'Gus'
+import Guex from 'Guex'
 
 const app = new Vue({
-  el: '#app',
-  template: `
-    <div>
-      <gus></gus>
-    </div>
-  `,
-  components: { Gus }
+  render: (h) => h(Guex)
 })
+
+app.$mount('#app')

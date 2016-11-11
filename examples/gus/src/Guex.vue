@@ -1,9 +1,9 @@
 
 <template>
   <div class="section">
-    <h3 class="title is-3">Github User Explorer</h3>
+    <h3 class="title is-3">GitHub User Explorer</h3>
     <div class="container">
-      <search></search>
+      <search @filter="doSearch"></search>
       <br/><br/>
       <user-list :users="users"></user-list>
     </div>
@@ -16,15 +16,17 @@
   import UserList from 'components/UserList'
   import user   from 'model/user'
 
-  const Gus = {
+  const Guex = {
+    name: 'guex',
+
     data() {
       return {
         users: []
       }
     },
 
-    events: {
-      ['on-search'](data) {
+    methods: {
+      doSearch(data) {
         user.search(data)
       }
     },
@@ -34,5 +36,5 @@
     }
   }
 
-  export default connect(Gus, { user })
+  export default connect(Guex, { user })
 </script>
