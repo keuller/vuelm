@@ -16,7 +16,7 @@
     methods: {
       doAddTask() {
         if (this.text === '') return
-        this.$dispatch('onAddTask', { text: this.text, completed: false })
+        this.$emit('addTask', { text: this.text, completed: false })
         this.text = ''
       }
     }

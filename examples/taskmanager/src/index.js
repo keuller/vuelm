@@ -1,13 +1,10 @@
 import 'babel-polyfill'
 import Vue  from 'vue'
+import Vuelm from 'vuelm'
 import TaskManager from 'TaskManager'
 
 const app = new Vue({
-  el: '#app',
-  template: `
-    <div>
-      <task-manager></task-manager>
-    </div>
-  `,
-  components: { TaskManager }
+  render: (h) => h(TaskManager)
 })
+
+app.$mount('#app')

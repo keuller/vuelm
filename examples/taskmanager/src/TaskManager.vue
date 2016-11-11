@@ -1,10 +1,10 @@
 
 <template>
   <div class="section">
-    <title text="Task Manager" size="3"></title>
-    <task-form></task-form>
+    <app-title text="Task Manager" size="3"></app-title>
+    <task-form @addTask="doAddTask"></task-form>
     <br/><br/>
-    <task-list :tasks="list"></task-list>
+    <task-list :tasks="list" @complete="doCompleteTask"></task-list>
     <task-filter :tasks="list" :filter="filter"></task-filter>
     <br/>
   </div>
@@ -13,13 +13,14 @@
 <script>
   import { connect } from 'vuelm'
   import task        from 'model/task'
-
-  import Title      from 'components/Title'
+  import AppTitle    from 'components/Title'
   import TaskForm   from 'components/TaskForm'
   import TaskList   from 'components/TaskList'
   import TaskFilter from 'components/TaskFilter'
 
   const TaskManager = {
+    name: 'task-manager',
+
     data() {
       return {
         tasks:[],
@@ -37,18 +38,18 @@
       }
     },
 
-    events: {
-      onAddTask(model) {
+    methods: {
+      doAddTask(model) {
         task.addTask(model)
       },
 
-      onCompleteTask(model) {
+      doCompleteTask(model) {
         task.completeTask(model)
       }
     },
 
     components: {
-      Title, TaskForm, TaskList, TaskFilter
+      AppTitle, TaskForm, TaskList, TaskFilter
     }
   }
 

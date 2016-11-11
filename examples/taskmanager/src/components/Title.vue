@@ -4,11 +4,13 @@
 </template>
 
 <script>
-  let Title = {
+  let AppTitle = {
+    name: 'app-title',
+    
     props: {
       text: { type: String, required: true }
     }
   }
 
-  export default Title
+  export default AppTitle
 </script>

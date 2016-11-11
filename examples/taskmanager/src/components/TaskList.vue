@@ -1,8 +1,6 @@
 <style>
   .finished { color: crimson; text-decoration: line-through; }
-  tbody tr:nth-child(even) {
-    background-color: #EFEFEF;
-  }
+  tbody tr:nth-child(even) { background-color: #EFEFEF; }
   .table td { vertical-align:middle; }
 </style>
 
@@ -22,7 +20,7 @@
         </td>
       </tr>
       <template v-for="task of tasks">
-        <task-item :task="task"></task-item>
+        <task-item :task="task" @completeTask="doCompleteTask"></task-item>
       </template>
     </tbody>
   </table>
@@ -32,12 +30,20 @@
   import TaskItem from 'components/TaskItem'
 
   const TaskList = {
+    name: 'task-list',
+
     props: {
       tasks: { type: Array }
     },
 
     components: {
       TaskItem
+    },
+
+    methods: {
+      doCompleteTask(item) {
+        this.$emit('complete', item)
+      }
     }
   }
 

@@ -23,7 +23,7 @@
       },
 
       doComplete(record) {
-        this.$dispatch('onCompleteTask', record)
+        this.$emit('completeTask', record)
       }
     }
   }
