@@ -38,12 +38,12 @@ This method enable/disable console log of updates.
 
 ![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_log.png)
 
-### Vuelm.store(state, updates, actions)
+### Vuelm.store(state, updates, stores)
 
 This method create your store object that represents the state of application.
 
 ```javascript
-	import { model } from 'vuelm'
+	import { store } from 'vuelm'
 	
 	const state = { ... }
 	
