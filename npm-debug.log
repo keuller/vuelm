@@ -1,0 +1,108 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.9.3
+3 info using node@v6.2.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/keuller/Development/workspace/vuelm',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/keuller/.npm/vuelm/0.3.5/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/keuller/.npm correctMkdir not in flight; initializing
+10 info lifecycle vuelm@0.3.5~prepublish: vuelm@0.3.5
+11 silly lifecycle vuelm@0.3.5~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/keuller/.npm/vuelm/0.3.5/package.tgz',
+12 verbose tar pack   '/Users/keuller/Development/workspace/vuelm' ]
+13 verbose tarball /Users/keuller/.npm/vuelm/0.3.5/package.tgz
+14 verbose folder /Users/keuller/Development/workspace/vuelm
+15 verbose addLocalTarball adding from inside cache /Users/keuller/.npm/vuelm/0.3.5/package.tgz
+16 verbose correctMkdir /Users/keuller/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd vuelm@0.3.5
+18 verbose afterAdd /Users/keuller/.npm/vuelm/0.3.5/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/keuller/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/keuller/.npm/vuelm/0.3.5/package/package.json written
+21 silly publish { name: 'vuelm',
+21 silly publish   version: '0.3.5',
+21 silly publish   description: 'Vuelm is Vue State Management inspired by Elm',
+21 silly publish   author:
+21 silly publish    { name: 'Keuller Magalhaes',
+21 silly publish      email: 'keuller.magalhaes@gmail.com' },
+21 silly publish   scripts: { test: 'tape \'test/**/*_test.js\' | faucet' },
+21 silly publish   repository: { type: 'git', url: 'git+https://github.com/keuller/vuelm.git' },
+21 silly publish   keywords: [ 'vuelm', 'vue', 'state management', 'elm' ],
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/keuller/vuelm/issues' },
+21 silly publish   dependencies: {},
+21 silly publish   devDependencies: { faucet: '0.0.1', tape: '^4.6.0' },
+21 silly publish   homepage: 'https://github.com/keuller/vuelm#readme',
+21 silly publish   main: 'index.js',
+21 silly publish   directories: { doc: 'docs', example: 'examples', test: 'test' },
+21 silly publish   readme: '# VuElm\n\n### It\'s a Vue state management inspired by Elm architecture.\n\n## Concepts\n\nThere are basically four elements on Elm architecture: Model, Actions, Updates and View.\n\n![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/elm_arch.png)\n\nThe image above describes the flow of Elm\'s architecture. **Vuelm** tries to bring it to Vue components.\n\nTo know more about Elm Architecture, see this [link](http://guide.elm-lang.org/architecture/).\n\n## Getting Started\n\nLet\'s to get started with a simple application: the counter.\n\nFirst lets create our model. The model is composed by 3 parts: state, updates and actions.\n\n```javascript\nimport { store, types } from \'vuelm\'\n\nconst Type = types(\'INCREMENT\', \'DECREMENT\')\n\nconst state = {\n  count: 0\n}\n\nconst updates = {\n  [Type.INCREMENT](state) {\n    state.count = state.count + 1\n    return state\n  },\n\n  [Type.DECREMENT](state) {\n    state.count = state.count - 1\n    return state\n  }\n}\n\nconst actions = {\n  increment() {\n    this.update(Type.INCREMENT)\n  },\n\n  decrement() {\n    this.update(Type.DECREMENT)\n  }\n}\n\nexport default store(state, updates, actions)\n```\n\nThe code above is pretty simple and straightforward. Ths state is representated by ```{ count: 0 }```.\n\nThe updates may be of two types: ```INCREMENT``` or ```DECREMENT```. The updates is responsible for change the state and produces a new state after those changes. In this case we\'re just increment the **count** plus 1 or decrement minus 1.\n\nThe actions just call ```this.update(type)``` method passing the **type** of update that we need to.\n\nTo build the model object, we must to join those three elements, passing to ```model``` function as arguments.\n\nNow we need to create our Vue component that will render the **counter**. The code below show the counter component:\n\n```html\n<template>\n  <div class="container">\n    <label>Counter</label>\n    <strong>{{count}}</strong>\n    <br/>\n    <button class="button" @click="inc()">Increment</button>\n    <button class="button" @click="dec()">Decrement</button>\n  </div>\n</template>\n\n<script>\n  import { connect } from \'vuelm\'\n  import counter from \'stores/counter\'\n\n  const Counter = {\n    data() {\n      return { count: 0 }\n    },\n\n    methods: {\n      inc() {\n        counter.increment()\n      },\n\n      dec() {\n        counter.decrement()\n      }\n    }\n  }\n  \n  export default connect(Counter, { counter })\n</script>\n\n```\n\nThis component has two buttons which are used to invoke actions from our model object. We use ```connect``` function to bind the component with model state.\n\nAs we can see Vuelm brings the simplicity and powerful design from Elm architecture to our Vue components.\n\n## Development Support\n\nVuelm has built in support for development through modes **debug** and **logger**. You can enable them using Vuelm API. See [docs](https://github.com/keuller/vuelm/blob/master/docs/Api.md)\n\n## How To Install\n\nTo install Vuelm, you can use: \n\n```bash\n$ npm install vuelm -S\n```\n\nSee the examples to learn more about Vuelm.\n\n## See Demos\n\n* [Counter Demo](http://keuller.com/vuelm/demos/counter/)\n* [Task Manager Demo](http://keuller.com/vuelm/demos/taskman/)\n* [GUS Demo](http://keuller.com/vuelm/demos/gus/)\n\n#### Note: VuElm 0.2.0 is compatible only with Vue 1.X.\n\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '276d2e56cc3c8d48342636021f6aa4351bf218bf',
+21 silly publish   _id: 'vuelm@0.3.5',
+21 silly publish   _shasum: '290c303f541b660ea696d9c0cc0fe5bc41300610',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name vuelm
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'vuelm',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'vuelm',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/vuelm
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/keuller/.npm/vuelm/0.3.5/package.tgz
+30 verbose request uri https://registry.npmjs.org/vuelm
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 11:27:51 AM
+33 verbose request using bearer token for auth
+34 verbose request id 1392be66f30d0484
+35 http request PUT https://registry.npmjs.org/vuelm
+36 http 403 https://registry.npmjs.org/vuelm
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Tue, 22 Nov 2016 13:27:53 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-gru7126-GRU',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1479821272.172697,VS0,VE1518',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/keuller/.npm/registry.npmjs.org/vuelm on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 0.3.5." : vuelm
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:200:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+40 verbose stack     at emitOne (events.js:101:20)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:988:12)
+41 verbose statusCode 403
+42 verbose pkgid vuelm
+43 verbose cwd /Users/keuller/Development/workspace/vuelm
+44 error Darwin 16.1.0
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v6.2.1
+47 error npm  v3.9.3
+48 error code E403
+49 error "You cannot publish over the previously published version 0.3.5." : vuelm
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
