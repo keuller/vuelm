@@ -18,7 +18,7 @@ The result will be:
 
 ### Vuelm.debug(true|false)
 
-From version 0.2.0, this method enable/disable integration with Vue DevTools. Default value is **false**.
+This method enable/disable integration with Vue DevTools. Default value is **false**.
 
 ```javascript
 	import Vuelm from 'vuelm'
@@ -34,13 +34,13 @@ The result will be:
 
 ### Vuelm.logger(true|false)
 
-From version 0.2.0, this method enable/disable console log of updates.
+This method enable/disable console log of updates.
 
 ![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_log.png)
 
-### Vuelm.model(state, updates, actions)
+### Vuelm.store(state, updates, actions)
 
-This function create model objects that represents the state of application.
+This method create your store object that represents the state of application.
 
 ```javascript
 	import { model } from 'vuelm'
@@ -51,7 +51,7 @@ This function create model objects that represents the state of application.
 	
 	const actions = { ... }
 	
-	export default model(state, updates, actions)
+	export default store(state, updates, actions)
 ```
 
 ### Vuelm.connect(component, models)
@@ -69,7 +69,7 @@ This function binds the Vue component with one or more models.
 	export default connect(Counter, { counter })
 ```
 
-The first argument is the Vue component object and the second one, must be a literal object with all models you wish to bind with. When you has more than one model bound to component, Vuelm merge all states of each model into a single one.
+The first argument is the Vue component and the second one, must be a literal object with all stores you wish to bind with. When you has more than one model bound to component, Vuelm merge all states of each model into a single one.
 
 ### Vuelm.types(...args)
 

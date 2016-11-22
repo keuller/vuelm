@@ -19,7 +19,7 @@ Let's to get started with a simple application: the counter.
 First lets create our model. The model is composed by 3 parts: state, updates and actions.
 
 ```javascript
-import { model, types } from 'vuelm'
+import { store, types } from 'vuelm'
 
 const Type = types('INCREMENT', 'DECREMENT')
 
@@ -49,7 +49,7 @@ const actions = {
   }
 }
 
-export default model(state, updates, actions)
+export default store(state, updates, actions)
 ```
 
 The code above is pretty simple and straightforward. Ths state is representated by ```{ count: 0 }```.
@@ -75,7 +75,7 @@ Now we need to create our Vue component that will render the **counter**. The co
 
 <script>
   import { connect } from 'vuelm'
-  import counter from 'models/counter'
+  import counter from 'stores/counter'
 
   const Counter = {
     data() {

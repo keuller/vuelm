@@ -12,7 +12,7 @@
 
 <script>
   import { connect } from 'vuelm'
-  import task        from 'model/task'
+  import task        from 'store/task'
   import AppTitle    from 'components/Title'
   import TaskForm   from 'components/TaskForm'
   import TaskList   from 'components/TaskList'

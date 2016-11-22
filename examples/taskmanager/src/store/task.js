@@ -1,4 +1,4 @@
-import { model, types } from 'vuelm'
+import { store, types } from 'vuelm'
 
 const Type = types(
   'ADD_TASK', 'END_TASK', 'CLEAR_COMPLETED', 'FILTER_TASK'
@@ -52,4 +52,4 @@ const actions = {
   }
 }
 
-export default model(state, updates, actions)
+export default store(state, updates, actions)

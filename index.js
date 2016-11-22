@@ -2,7 +2,7 @@
   'use strict'
 
   var runtime = {
-    VERSION: '0.3.5',
+    VERSION: '0.4.0',
     IS_DEBUG: false,
     IS_LOGGER: false
   }
@@ -45,7 +45,7 @@
     runtime.IS_LOGGER = flag
   }
 
-  var Model = function(state, updates, actions) {
+  var Store = function(state, updates, actions) {
     this._options = {
       state: state,
       updates: updates
@@ -61,7 +61,7 @@
     }
   }
 
-  Model.prototype = {
+  Store.prototype = {
     _notify: function() {
       var $state = deepCopy(this._options.state)
       for(var id in this._subscribers) {
@@ -114,14 +114,20 @@
   }
 
   var _model = function model(state, updates, actions) {
-    var $model = new Model(state, updates, actions)
+    console.warn('\'model\' method is deprecated and will be removed. Instead use \'store\' function to create your stores.')
+    var $model = new Store(state, updates, actions)
+    if (hook) { hook.emit('vuex:init', this) }
+    return $model
+  };
+
+  var _store = function store(state, updates, actions) {
+    var $model = new Store(state, updates, actions)
     if (hook) { hook.emit('vuex:init', this) }
     return $model
   };
 
   var _connect = function connect(component, models) {
-    var _ready = component.mounted
-      , _created = component.created
+    var _mounted = component.mounted
       , _bdestroy = component.beforeDestroy
 
     if (typeof models !== 'object') {
@@ -129,22 +135,14 @@
       return
     }
 
-    component.created = function() {
-      var _state = {}
-      for (var key in models) {
-        _state = Object.assign(_state, models[key].state())
-      }
-      this.$options.state = _state
-      if (_created !== undefined) _created()
-    }
-
     component.mounted = function() {
-      var _disposes = [], _state = this.$options.state
+      var _disposes = []
 
       var watcher = function(newState) {
-        this.$options.state = Object.assign(_state, newState)
-        for(var prop in this.$options.state) {
-          this.$set(this, prop, deepProp(this.$options.state, prop))
+        for(var prop in newState) {
+          if (this.hasOwnProperty(prop)) {
+            this.$set(this, prop, deepProp(newState, prop))
+          }
         }
       }.bind(this)
 
@@ -152,14 +150,14 @@
         _disposes.push(models[key].observe(watcher))
       }
 
-      if (_ready !== undefined) _ready()
+      if (_mounted !== undefined) _mounted()
       component.$disposes = _disposes
-      this.$options.state = _state
     }
 
     component.beforeDestroy = function() {
       if (_bdestroy !== undefined) _bdestroy()
       component.$disposes.forEach(function(dispose) { dispose() })
+      component.$disposes = null
     }
 
     return component
@@ -182,5 +180,6 @@
   exports.logger = _enableLog
   exports.debug = _enableDebug
   exports.model = _model
+  exports.store = _store
   exports.connect = _connect
 })(typeof exports === 'undefined' ? (this.Vuelm = {}) : exports)

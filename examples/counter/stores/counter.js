@@ -25,4 +25,4 @@ var actions = {
   }
 }
 
-var Counter = Vuelm.model(state, updates, actions)
+var Counter = Vuelm.store(state, updates, actions)

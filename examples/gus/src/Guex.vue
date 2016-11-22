@@ -14,7 +14,7 @@
   import { connect } from 'vuelm'
   import Search from 'components/Search'
   import UserList from 'components/UserList'
-  import user   from 'model/user'
+  import user   from 'store/user'
 
   const Guex = {
     name: 'guex',
