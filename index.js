@@ -127,15 +127,15 @@
   };
 
   var _connect = function connect(component, models) {
-    var _mounted = component.mounted
-      , _bdestroy = component.beforeDestroy
+    var _bcreate = component.beforeCreate
+      , _bdestroy =component.beforeDestroy
 
     if (typeof models !== 'object') {
       console.warn('\"models\" object must be defined.')
       return
     }
 
-    component.mounted = function() {
+    component.beforeCreate = function() {
       var _disposes = []
 
       var watcher = function(newState) {
@@ -150,7 +150,7 @@
         _disposes.push(models[key].observe(watcher))
       }
 
-      if (_mounted !== undefined) _mounted()
+      if (_bcreate !== undefined) _bcreate.call(component)
       component.$disposes = _disposes
     }
 
