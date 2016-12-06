@@ -92,13 +92,13 @@ Now we need to create our Vue component that will render the **counter**. The co
       }
     }
   }
-  
+
   export default connect(Counter, { counter })
 </script>
 
 ```
 
-This component has two buttons which are used to invoke actions from our model object. We use ```connect``` function to bind the component with model state.
+This component has two buttons which are used to invoke actions from our store. We use ```connect``` function to bind the component with model state.
 
 As we can see Vuelm brings the simplicity and powerful design from Elm architecture to our Vue components.
 
@@ -108,7 +108,7 @@ Vuelm has built in support for development through modes **debug** and **logger*
 
 ## How To Install
 
-To install Vuelm, you can use: 
+To install Vuelm, you can use:
 
 ```bash
 $ npm install vuelm -S
@@ -123,4 +123,3 @@ See the examples to learn more about Vuelm.
 * [GUS Demo](http://keuller.com/vuelm/demos/gus/)
 
 #### Note: VuElm 0.2.0 is compatible only with Vue 1.X.
-
