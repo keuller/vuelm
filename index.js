@@ -2,7 +2,7 @@
   'use strict'
 
   var runtime = {
-    VERSION: '0.4.0',
+    VERSION: '0.5.0',
     IS_DEBUG: false,
     IS_LOGGER: false
   }
