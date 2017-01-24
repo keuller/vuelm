@@ -114,6 +114,8 @@ To install Vuelm, you can use:
 $ npm install vuelm -S
 ```
 
+Or use the [vue-starter broilerplate](https://github.com/keuller/vue-starter).
+
 See the examples to learn more about Vuelm.
 
 ## See Demos
