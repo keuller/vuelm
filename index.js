@@ -2,7 +2,7 @@
   'use strict'
 
   var runtime = {
-    VERSION: '0.5.0',
+    VERSION: '0.6.0',
     IS_DEBUG: false,
     IS_LOGGER: false
   }
@@ -126,12 +126,13 @@
     return $model
   };
 
-  var _connect = function connect(component, models) {
+  var _connect = function connect(component, store) {
     var _bcreate = component.beforeCreate
-      , _bdestroy =component.beforeDestroy
+      , _bdestroy = component.beforeDestroy
+      , _bmount = component.beforeMount
 
-    if (typeof models !== 'object') {
-      console.warn('\"models\" object must be defined.')
+    if (typeof store !== 'object') {
+      console.warn('\"store\" object must be defined.')
       return
     }
 
@@ -146,8 +147,8 @@
         }
       }.bind(this)
 
-      for (var key in models) {
-        _disposes.push(models[key].observe(watcher))
+      for (var key in store) {
+        _disposes.push(store[key].observe(watcher))
       }
 
       if (_bcreate !== undefined) _bcreate.call(component)
@@ -158,6 +159,19 @@
       if (_bdestroy !== undefined) _bdestroy()
       component.$disposes.forEach(function(dispose) { dispose() })
       component.$disposes = null
+    }
+
+    component.beforeMount = function() {
+      // initialize component with store current state
+      for (var key in store) {
+        var tmp = store[key].state()
+        for (var prop in tmp) {
+            if (this.hasOwnProperty(prop)) {
+              this.$set(this, prop, deepProp(tmp, prop))
+            }
+        }
+      }
+      if (_bmount != undefined) _bmount()
     }
 
     return component
