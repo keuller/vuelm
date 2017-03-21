@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import Vue  from 'vue'
 import Vuelm from 'vuelm'
 import TaskManager from 'TaskManager'

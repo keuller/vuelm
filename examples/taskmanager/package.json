@@ -1,6 +1,6 @@
 {
   "name": "taskmanager",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Task Manager Vuelm example",
   "main": "src/index.js",
   "scripts": {
@@ -14,28 +14,41 @@
   ],
   "author": "Keuller Magalhaes",
   "license": "MIT",
+  "babel": {
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-vue-jsx"
+    ]
+  },
   "dependencies": {
-    "babel-polyfill": "^6.16.0",
-    "vue": "^2.0.8",
-    "vuelm": "^0.4.0"
+    "vue": "^2.2.4",
+    "vuelm": "^0.6.0"
   },
   "devDependencies": {
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.8",
-    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.4.2",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-2": "^6.18.0",
     "babel-runtime": "^6.18.0",
     "cross-env": "^3.1.3",
-    "css-loader": "^0.25.0",
-    "file-loader": "^0.9.0",
+    "css-loader": "^0.27.3",
+    "file-loader": "^0.10.1",
     "json-loader": "^0.5.4",
     "url-loader": "^0.5.7",
     "vue-hot-reload-api": "^2.0.6",
-    "vue-html-loader": "^1.0.0",
-    "vue-loader": "^9.9.5",
-    "vue-style-loader": "^1.0.0",
-    "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "vue-loader": "^11.2.0",
+    "vue-style-loader": "^2.0.4",
+    "vue-template-compiler": "^2.2.4",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   }
 }

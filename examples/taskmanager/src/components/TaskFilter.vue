@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import task from 'model/task'
+  import task from 'store/task'
 
   const TaskFilter = {
     props: ['tasks', 'filter'],
