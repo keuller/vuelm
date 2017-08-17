@@ -68,8 +68,8 @@ Now we need to create our Vue component that will render the **counter**. The co
     <label>Counter</label>
     <strong>{{count}}</strong>
     <br/>
-    <button class="button" @click="inc()">Increment</button>
-    <button class="button" @click="dec()">Decrement</button>
+    <button class="button" @click="increment()">Increment</button>
+    <button class="button" @click="decrement()">Decrement</button>
   </div>
 </template>
 
@@ -80,16 +80,6 @@ Now we need to create our Vue component that will render the **counter**. The co
   const Counter = {
     data() {
       return { count: 0 }
-    },
-
-    methods: {
-      inc() {
-        counter.increment()
-      },
-
-      dec() {
-        counter.decrement()
-      }
     }
   }
 
@@ -98,7 +88,7 @@ Now we need to create our Vue component that will render the **counter**. The co
 
 ```
 
-This component has two buttons which are used to invoke actions from our store. We use ```connect``` function to bind the component with model state.
+This component has two buttons which are used to invoke actions from our store. We use ```connect``` function to bind the component with store. You can call actions directly from store, as you can see in above example, we associate ```increment``` and ```decrement``` action into component.
 
 As we can see Vuelm brings the simplicity and powerful design from Elm architecture to our Vue components.
 
