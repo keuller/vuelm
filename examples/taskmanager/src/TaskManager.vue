@@ -2,10 +2,10 @@
 <template>
   <div class="section">
     <app-title text="Task Manager" size="3"></app-title>
-    <task-form @addTask="doAddTask"></task-form>
+    <task-form @addTask="addTask"></task-form>
     <br/><br/>
-    <task-list :tasks="list" @complete="doCompleteTask"></task-list>
-    <task-filter :tasks="list" :filter="filter"></task-filter>
+    <task-list :tasks="list" @complete="completeTask"></task-list>
+    <task-filter :tasks="list" :filter="filter" @onFilter="doFilter" @onCompleted="clearCompleted"></task-filter>
     <br/>
   </div>
 </template>
@@ -35,16 +35,6 @@
           case 'COMPLETED': return this.tasks.filter(task => task.completed)
           default: return this.tasks
         }
-      }
-    },
-
-    methods: {
-      doAddTask(model) {
-        task.addTask(model)
-      },
-
-      doCompleteTask(model) {
-        task.completeTask(model)
       }
     },
 

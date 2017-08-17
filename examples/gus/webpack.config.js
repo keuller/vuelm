@@ -1,54 +1,49 @@
 var path = require('path')
-var webpack = require('webpack')
+  , webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    bundle: './src/index.js',
+    vendor: ['vue', 'vuelm']
+  },
 
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
 
   resolve: {
-      extensions: ['', '.js', '.vue'],
-      modulesDirectories: ['src', 'node_modules']
+      extensions: ['.js', '.vue'],
+      modules: ['src', 'node_modules']
   },
 
   node: {
       fs: 'empty'
   },
 
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
-  },
-
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/,
         loader: "style!css"
       },
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.json$/,
-        loader: 'json'
-      },
-      {
-        test: /\.html$/,
-        loader: 'vue-html'
+        loader: 'json-loader'
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: '[name].[ext]?[hash]'
@@ -57,21 +52,26 @@ module.exports = {
     ]
   },
 
-  babel: {
-    presets: ["es2015", "stage-2"],
-    plugins: ["transform-runtime"]
-  },
-
   devServer: {
     historyApiFallback: true,
+    port: 9000,
     noInfo: true
   },
-  devtool: '#eval-source-map'
+
+  devtool: '#eval-source-map',
+
+  plugins: [
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor'],
+      warnings: false
+    })
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
+
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -79,10 +79,19 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
+      comments: false,
+      sourceMap: false,
       compress: {
-        warnings: false
+        warnings: false,
+        conditionals: true,
+        warnings: false,
+        dead_code: true,
+        unused: true,
+        evaluate: true,
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
   ])
 }

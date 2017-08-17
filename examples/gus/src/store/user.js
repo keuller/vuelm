@@ -1,7 +1,7 @@
-import { model, types } from 'vuelm'
+import { store, types } from 'vuelm'
 import axios from 'axios'
 
-const Type = types('GET_USERS')
+const Type = types('GET_USERS', 'CLEAR_USERS')
 const baseUrl = 'https://api.github.com'
 
 const state = {
@@ -9,6 +9,11 @@ const state = {
 }
 
 const updates = {
+  [Type.CLEAR_USERS](state) {
+    state.users = []
+    return {...state}
+  },
+
   [Type.GET_USERS](state, list) {
     state.users = [...list]
     return state
@@ -16,6 +21,10 @@ const updates = {
 }
 
 const actions = {
+  clear() {
+    this.update(Type.CLEAR_USERS)
+  },
+
   search(obj) {
     let params = `?q=${obj.text}`
     axios.get(`${baseUrl}/search/users${params}`).then(result => {
@@ -26,4 +35,4 @@ const actions = {
   }
 }
 
-export default model(state, updates, actions)
+export default store(state, updates, actions)

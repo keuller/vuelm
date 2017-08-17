@@ -9,6 +9,8 @@
 
 <script>
   let TaskForm = {
+    name: 'task-form',
+
     data() {
       return { text: '' }
     },

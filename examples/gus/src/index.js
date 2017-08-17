@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import Vue from 'vue'
 import Guex from 'Guex'
 

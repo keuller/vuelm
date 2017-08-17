@@ -9,7 +9,7 @@
     <thead>
       <tr>
         <th>Task</th>
-        <th width="5%">&nbsp;</th>
+        <th width="5%">Actions</th>
       </tr>
     </thead>
     <tbody>

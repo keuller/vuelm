@@ -10,11 +10,11 @@
     </div>
     <div class="is-pulled-right">
       <div class="is-pulled-right">
-        <a href="#" :class="{ 'is-disabled': isAll }" @click.stop="doFilterAll()">All</a>
+        <a href="#" :class="{ 'is-disabled': isAll }" @click.stop="doFilter('ALL')">All</a>
         <span>&nbsp;</span>
-        <a href="#" :class="{ 'is-disabled': isActive }" @click.stop="doFilterActive()">Active</a>
+        <a href="#" :class="{ 'is-disabled': isActive }" @click.stop="doFilter('ACTIVE')">Active</a>
         <span>&nbsp;</span>
-        <a href="#" :class="{ 'is-disabled': isCompleted }" @click.stop="doFilterCompleted()">Completed</a>
+        <a href="#" :class="{ 'is-disabled': isCompleted }" @click.stop="doFilter('COMPLETED')">Completed</a>
         <span v-if="completedCount > 0">
           <span>&nbsp;</span>
           <span>&nbsp;</span>
@@ -27,9 +27,9 @@
 </template>
 
 <script>
-  import task from 'store/task'
-
   const TaskFilter = {
+    name: 'task-filter',
+
     props: ['tasks', 'filter'],
 
     computed: {
@@ -55,20 +55,12 @@
     },
 
     methods: {
-      doFilterAll() {
-        task.filter('ALL')
-      },
-
-      doFilterActive() {
-        task.filter('ACTIVE')
-      },
-
-      doFilterCompleted() {
-        task.filter('COMPLETED')
+      doFilter(type) {
+        this.$emit('onFilter', type)
       },
 
       doClearCompleted() {
-        task.clearCompleted()
+        this.$emit('onCompleted')
       }
     }
   }

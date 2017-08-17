@@ -10,6 +10,8 @@
 
 <script>
   const UserRow = {
+    name: 'user-row',
+    
     props: ['user']
   }
 

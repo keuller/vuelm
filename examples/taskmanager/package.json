@@ -18,36 +18,28 @@
     "presets": [
       [
         "es2015",
-        {
-          "modules": false
-        }
+        "stage-2"
       ]
-    ],
-    "plugins": [
-      "transform-vue-jsx"
     ]
   },
   "dependencies": {
-    "vue": "^2.2.4",
-    "vuelm": "^0.6.0"
+    "vue": "^2.4.2",
+    "vuelm": "^0.7.0"
   },
   "devDependencies": {
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-vue-jsx": "^3.4.2",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-2": "^6.18.0",
-    "babel-runtime": "^6.18.0",
-    "cross-env": "^3.1.3",
-    "css-loader": "^0.27.3",
-    "file-loader": "^0.10.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.5",
+    "file-loader": "^0.11.2",
     "json-loader": "^0.5.4",
     "url-loader": "^0.5.7",
-    "vue-hot-reload-api": "^2.0.6",
-    "vue-loader": "^11.2.0",
-    "vue-style-loader": "^2.0.4",
-    "vue-template-compiler": "^2.2.4",
+    "vue-hot-reload-api": "^2.1.0",
+    "vue-loader": "^13.0.4",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.4.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
   }

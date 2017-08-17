@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Vuelm Counter</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
     <style type="text/css">
       .negative { color:crimson; }
     </style>
   </head>
   <body>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.min.js"></script>
-    <script type="text/javascript" src="https://s3-us-west-1.amazonaws.com/keuller.com/vuelm/v0.6.0/vuelm.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+    <script type="text/javascript" src="https://s3-us-west-1.amazonaws.com/keuller.com/vuelm/v0.7.0/vuelm.js"></script>
     <script type="text/javascript" src="./stores/counter.js"></script>
     <br/>
     <div id="app">
@@ -20,8 +20,8 @@
         <label>Counter</label>
         <strong :class="negative()">{{count}}</strong>
         <br/>
-        <button class="button is-primary" @click="inc()">Increment</button>
-        <button class="button is-danger" @click="dec()">Decrement</button>
+        <button class="button is-primary" @click="increment()">Increment</button>
+        <button class="button is-danger" @click="decrement()">Decrement</button>
       </div>
     </div>
 
@@ -40,12 +40,6 @@
         },
 
         methods: {
-          inc: function() {
-            Counter.increment()
-          },
-          dec: function() {
-            Counter.decrement()
-          },
           negative() {
             return { 'negative': this.count < 0 }
           }

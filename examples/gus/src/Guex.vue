@@ -2,8 +2,8 @@
 <template>
   <div class="section">
     <h3 class="title is-3">GitHub User Explorer</h3>
-    <div class="container">
-      <search @filter="doSearch"></search>
+    <div class="container is-fluid">
+      <search @filter="search" @clear="clear"></search>
       <br/><br/>
       <user-list :users="users"></user-list>
     </div>
@@ -22,12 +22,6 @@
     data() {
       return {
         users: []
-      }
-    },
-
-    methods: {
-      doSearch(data) {
-        user.search(data)
       }
     },
 

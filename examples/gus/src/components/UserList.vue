@@ -1,8 +1,8 @@
 
 <template>
-  <div class="container">
+  <div class="">
     <h4 class="subtitle is-4">User List</h4>
-    <table class="table">
+    <table class="table is-fullwidth">
       <thead>
         <tr>
           <th width="10%">ID</th>
@@ -29,6 +29,8 @@
   import UserRow from 'components/UserRow'
 
   const UserList = {
+    name: 'user-list',
+
     props: ['users'],
 
     components: {

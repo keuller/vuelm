@@ -43,7 +43,7 @@ const actions = {
     this.update(Type.END_TASK, task)
   },
 
-  filter(type) {
+  doFilter(type) {
     this.update(Type.FILTER_TASK, type)
   },
 
