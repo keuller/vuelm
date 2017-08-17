@@ -33,7 +33,7 @@ var Actions = {
 test('create model', function(t) {
   t.plan(2)
 
-  var Counter = Vuelm.model(state, Updates, Actions)
+  var Counter = Vuelm.store(state, Updates, Actions)
 
   t.notEqual(Counter, null)
   t.deepEqual(Counter.state(), { count: 0 })
@@ -42,7 +42,7 @@ test('create model', function(t) {
 test('get property from state', function(t) {
   t.plan(1)
 
-  var Counter = Vuelm.model(state, Updates, Actions)
+  var Counter = Vuelm.store(state, Updates, Actions)
 
   t.equal(Counter.get('count'), 0)
 })
@@ -50,7 +50,7 @@ test('get property from state', function(t) {
 test('Update state', function(t) {
   t.plan(3)
 
-  var Counter = Vuelm.model(state, Updates, Actions)
+  var Counter = Vuelm.store(state, Updates, Actions)
   t.equal(Counter.get('count'), 0, 'count starts 0')
 
   Counter.increment()
@@ -63,7 +63,7 @@ test('Update state', function(t) {
 test('Observer mutations', function(t) {
   t.plan(1)
 
-  var Counter = Vuelm.model(state, Updates, Actions)
+  var Counter = Vuelm.store(state, Updates, Actions)
   var dispose = Counter.observe(function(state) {
     t.deepEqual(state, { count: 1 })
   })

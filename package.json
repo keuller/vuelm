@@ -1,6 +1,6 @@
 {
   "name": "vuelm",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Vuelm is Vue State Management inspired by Elm",
   "author": "Keuller Magalhaes <keuller.magalhaes@gmail.com>",
   "scripts": {
@@ -23,7 +23,7 @@
   "dependencies": {},
   "devDependencies": {
     "faucet": "0.0.1",
-    "tape": "^4.6.0"
+    "tape": "^4.8.0"
   },
   "homepage": "https://github.com/keuller/vuelm#readme",
   "main": "index.js",

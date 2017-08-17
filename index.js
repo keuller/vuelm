@@ -2,7 +2,7 @@
   'use strict'
 
   var runtime = {
-    VERSION: '0.6.0',
+    VERSION: '0.7.0',
     IS_DEBUG: false,
     IS_LOGGER: false
   }
@@ -30,8 +30,8 @@
   }
 
   var _info = function() {
-    console.log('Vuelm version: ', runtime.VERSION)
-    console.log('Vuelm debug mode:', runtime.IS_DEBUG)
+    console.log('Vuelm version....:', runtime.VERSION)
+    console.log('Vuelm debug mode.:', runtime.IS_DEBUG)
     console.log('Vuelm logger mode:', runtime.IS_LOGGER)
   }
 
@@ -126,6 +126,31 @@
     return $model
   };
 
+  var assign_actions = function assign_actions(component, store) {
+    var cmethods = component.methods || {}
+      , cname = component.name || 'unknown'
+      , def_funcs = ['state', 'get', 'update', 'observe', '_notify']
+      , ctype = null
+
+    var isDefaultFunc = function(name) {
+      var has = def_funcs.filter(function(item) { return item == name })
+      return (has.length > 0)
+    };
+
+    for(var key in store) {
+      ctype = (typeof store[key])
+      if (ctype == 'function' && !isDefaultFunc(key)) {
+        if (cmethods.hasOwnProperty(key)) {
+          console.warn("Component '%s' already have a method called '%s'", cname, key)
+        } else {
+          cmethods[key] = store[key].bind(store)
+        }
+      }
+    }
+
+    component.methods = cmethods
+  };
+
   var _connect = function connect(component, store) {
     var _bcreate = component.beforeCreate
       , _bdestroy = component.beforeDestroy
@@ -134,6 +159,11 @@
     if (typeof store !== 'object') {
       console.warn('\"store\" object must be defined.')
       return
+    }
+
+    // inject store action into component
+    for (var key in store) {
+      assign_actions(component, store[key])
     }
 
     component.beforeCreate = function() {
@@ -162,7 +192,7 @@
     }
 
     component.beforeMount = function() {
-      // initialize component with store current state
+      // initialize component with current state's store
       for (var key in store) {
         var tmp = store[key].state()
         for (var prop in tmp) {
@@ -193,7 +223,6 @@
   exports.isDebug = runtime.IS_DEBUG
   exports.logger = _enableLog
   exports.debug = _enableDebug
-  exports.model = _model
   exports.store = _store
   exports.connect = _connect
 })(typeof exports === 'undefined' ? (this.Vuelm = {}) : exports)
