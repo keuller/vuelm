@@ -88,7 +88,7 @@ This function create a literal object that will be used as update type. You must
 	}
 ```
 
-### Vuelm.update(type, data)
+### update(type, data)
 
 This method is used to send an update to model, specifying the update type and some data (optional).
 
@@ -98,4 +98,12 @@ This method is used to send an update to model, specifying the update type and s
 			this.update(Types.ADD_TASK, task)
 		}
 	}
+```
+
+### sync(data)
+
+This method synchronizes ViewModel data to model. This method is added automatically into Vue component instance. You can see the use of this feature in *Financial* example.
+
+```javascript
+	this.sync(this.$data)
 ```

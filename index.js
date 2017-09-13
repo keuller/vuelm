@@ -2,7 +2,7 @@
   'use strict'
 
   var runtime = {
-    VERSION: '0.7.0',
+    VERSION: '0.8.0',
     IS_DEBUG: false,
     IS_LOGGER: false
   }
@@ -46,6 +46,10 @@
   }
 
   var Store = function(state, updates, actions) {
+    updates.SYNC_MODEL = function(state, data) {
+      return deepCopy(state, data)
+    };
+
     this._options = {
       state: state,
       updates: updates
@@ -129,7 +133,7 @@
   var assign_actions = function assign_actions(component, store) {
     var cmethods = component.methods || {}
       , cname = component.name || 'unknown'
-      , def_funcs = ['state', 'get', 'update', 'observe', '_notify']
+      , def_funcs = ['get', 'update', 'observe', '_notify']
       , ctype = null
 
     var isDefaultFunc = function(name) {
@@ -147,6 +151,11 @@
         }
       }
     }
+
+    cmethods.sync = function(obj) {
+      var data = JSON.parse(JSON.stringify(obj))
+      this.update('SYNC_MODEL', data);
+    }.bind(store);
 
     component.methods = cmethods
   };

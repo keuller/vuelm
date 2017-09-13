@@ -1,0 +1,61 @@
+{
+  "name": "financial",
+  "version": "1.0.0",
+  "description": "Task Manager Vuelm example",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "keywords": [
+    "vue",
+    "vuelm",
+    "state management",
+    "example"
+  ],
+  "author": "Keuller Magalhaes",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2",
+      [ "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "chrome >= 59",
+            "firefox >= 55"
+          ]
+        }
+      }]
+    ]
+  },
+  "dependencies": {
+    "bulma": "^0.5.1",
+    "vue": "^2.4.2",
+    "vuelm": "^0.7.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.5",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "url-loader": "^0.5.7",
+    "vue-hot-reload-api": "^2.1.0",
+    "vue-loader": "^13.0.4",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.4.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  }
+}

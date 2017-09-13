@@ -1,0 +1,4 @@
+html, body { background-color: #efefef }
+#topbar > .navbar-brand > .navbar-item, 
+#topbar > .navbar-menu > .navbar-start > .navbar-item,
+#topbar > .navbar-menu > .navbar-end > .navbar-item { color:#EFEFEF !important; }
