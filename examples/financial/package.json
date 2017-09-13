@@ -19,22 +19,24 @@
     "presets": [
       "es2015",
       "stage-2",
-      [ "env",
-      {
-        "targets": {
-          "browsers": [
-            "last 2 versions",
-            "chrome >= 59",
-            "firefox >= 55"
-          ]
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "chrome >= 59",
+              "firefox >= 55"
+            ]
+          }
         }
-      }]
+      ]
     ]
   },
   "dependencies": {
     "bulma": "^0.5.1",
-    "vue": "^2.4.2",
-    "vuelm": "^0.7.0"
+    "vue": "^2.4.3",
+    "vuelm": "^0.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -53,8 +55,8 @@
     "url-loader": "^0.5.7",
     "vue-hot-reload-api": "^2.1.0",
     "vue-loader": "^13.0.4",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.4.2",
+    "vue-style-loader": "^3.0.2",
+    "vue-template-compiler": "^2.4.3",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   }
