@@ -29,7 +29,7 @@
       Vuelm.info()
       console.log('Vuelm:', Vuelm.version)
 
-      var app = {
+      var CounterApp = {
         data: function() {
           return {
             count: 0
@@ -43,7 +43,7 @@
         }
       }
 
-      let app = new Vue(Vuelm.connect(app, { counter: Counter }))
+      let app = new Vue(Vuelm.connect(CounterApp, { counter: Counter }))
       app.$mount('#app')
     </script>
   </body>

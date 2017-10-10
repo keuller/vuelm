@@ -15,7 +15,7 @@ const store = (state, updates, actions) => {
 const deprecated = (cmd) => () => { console.warn("'%s' is deprecated and will be removed on next version.", cmd) }
 
 export default {
-    version: '0.8.1',
+    version: '0.8.2',
     types: createTypes,
     store,
     info: deprecated('info'),
