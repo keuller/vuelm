@@ -51,7 +51,6 @@ Store.prototype = {
             next = prev
         }
 
-        // if (this.debug && hook) { hook.emit('vuex:mutation', { type: type, payload: data || {} }, next) }
         if (this.logger) console.log('New State:', next)
         if (this.logger && console.groupEnd) console.groupEnd()
         this._notify()

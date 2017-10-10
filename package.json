@@ -1,6 +1,6 @@
 {
   "name": "vuelm",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Vuelm is Vue State Management inspired by Elm",
   "author": "Keuller Magalhaes <keuller.magalhaes@gmail.com>",
   "scripts": {

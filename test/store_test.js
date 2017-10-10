@@ -1,9 +1,7 @@
-var Vuelm = require('../dist/vuelm')
+var Vuelm = require('../index')
 var test = require('tape')
 
 var Type = Vuelm.types('INCREMENT', 'DECREMENT')
-
-Vuelm.info()
 
 var state = {
   count: 0
