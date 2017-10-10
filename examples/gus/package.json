@@ -34,7 +34,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "vue": "^2.4.4",
-    "vuelm": "^0.8.2"
+    "vuelm": "^0.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
