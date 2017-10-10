@@ -26,3 +26,5 @@ var actions = {
 }
 
 var Counter = Vuelm.store(state, updates, actions)
+// to enable logging
+// Counter.logger = true

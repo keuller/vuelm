@@ -58,7 +58,7 @@ The updates may be of two types: ```INCREMENT``` or ```DECREMENT```. The updates
 
 The actions just call ```this.update(type)``` method passing the **type** of update that we need to.
 
-To build the model object, we must to join those three elements, passing to ```model``` function as arguments.
+To build the model object, we must to join those three elements, passing to ```store``` function as arguments.
 
 Now we need to create our Vue component that will render the **counter**. The code below show the counter component:
 
@@ -78,6 +78,7 @@ Now we need to create our Vue component that will render the **counter**. The co
   import counter from 'stores/counter'
 
   const Counter = {
+    name: 'Counter',
     data() {
       return { count: 0 }
     }
@@ -92,27 +93,26 @@ This component has two buttons which are used to invoke actions from our store. 
 
 As we can see Vuelm brings the simplicity and powerful design from Elm architecture to our Vue components.
 
-## Development Support
-
-Vuelm has built in support for development through modes **debug** and **logger**. You can enable them using Vuelm API. See [docs](https://github.com/keuller/vuelm/blob/master/docs/Api.md)
-
 ## How To Install
 
 To install Vuelm, you can use:
 
 ```bash
-$ npm install vuelm -S
+$ yarn add vuelm     // npm install vuelm -S
 ```
 
-Or use the [vue-starter broilerplate](https://github.com/keuller/vue-starter).
+Or you can use [vue-starter](https://github.com/keuller/vue-starter) template, as shown below:
+
+```javascript
+$ vue init keuller/vue-starter [project-name]
+```
 
 See the examples to learn more about Vuelm.
 
-## See Demos
+## See Online Demos
 
 * [Counter Demo](http://keuller.com/vuelm/demos/counter/)
 * [Task Manager Demo](http://keuller.com/vuelm/demos/taskman/)
 * [GUS Demo](http://keuller.com/vuelm/demos/gus/)
 * [Financial](http://keuller.com/vuelm/demos/financial)
 
-#### Note: VuElm 0.2.0 is compatible only with Vue 1.X.

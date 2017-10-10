@@ -1,42 +1,6 @@
 # Vuelm API
 
-This document describes the Vuelm API.
-
-### Vuelm.info()
-
-This method prints out on browser's console the informations about Vuelm.
-
-```javascript
-	import Vuelm from 'vuelm'
-	
-	Vuelm.info()
-```
-
-The result will be:
-
-![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_info.png)
-
-### Vuelm.debug(true|false)
-
-This method enable/disable integration with Vue DevTools. Default value is **false**.
-
-```javascript
-	import Vuelm from 'vuelm'
-	
-	Vuelm.debug(true)
-```
-
-The result will be:
-
-![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_debug.png)
-
-*Notice: There is an issue when you click on Reset button, but it does not affect your code. Its occurs because Vuelm does not support the expected API. Vue DevTool was designed to Vuex.*
-
-### Vuelm.logger(true|false)
-
-This method enable/disable console log of updates.
-
-![alt text](https://github.com/keuller/vuelm/raw/master/docs/images/vuelm_log.png)
+This document describes the VuElm API.
 
 ### Vuelm.store(state, updates, stores)
 
@@ -52,6 +16,15 @@ This method create your store object that represents the state of application.
 	const actions = { ... }
 	
 	export default store(state, updates, actions)
+```
+
+To enable logging to specific store, just change the **logger** property to true.
+
+```javascript
+	const mystore = store(state, updates, actions)
+	mystore.logger = true
+
+	export default mystore
 ```
 
 ### Vuelm.connect(component, models)

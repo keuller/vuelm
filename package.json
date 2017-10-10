@@ -1,9 +1,11 @@
 {
   "name": "vuelm",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Vuelm is Vue State Management inspired by Elm",
   "author": "Keuller Magalhaes <keuller.magalhaes@gmail.com>",
   "scripts": {
+    "start": "rollup --config vuelm.config.js -w",
+    "build": "export NODE_ENV=prod && rollup --config vuelm.config.js",
     "test": "tape 'test/**/*_test.js' | faucet"
   },
   "repository": {
@@ -11,10 +13,10 @@
     "url": "git+https://github.com/keuller/vuelm.git"
   },
   "keywords": [
-    "vuelm",
     "vue",
     "state management",
-    "elm"
+    "elm",
+    "vuelm"
   ],
   "license": "MIT",
   "bugs": {
@@ -22,7 +24,14 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "faucet": "0.0.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
     "tape": "^4.8.0"
   },
   "homepage": "https://github.com/keuller/vuelm#readme",

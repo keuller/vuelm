@@ -50,7 +50,7 @@ let config = {
 
     devServer: {
         historyApiFallback: true,
-        port: '8000',
+        port: '8080',
         noInfo: true
     },
 
