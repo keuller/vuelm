@@ -6,7 +6,7 @@ const config = {
     input: 'src/index.js',
 
     output: {
-        file: 'dist/vuelm.js',
+        file: 'index.js',
         format: 'umd',
         name: 'Vuelm'
     },
